@@ -22,5 +22,63 @@ d is the update function d: SXQ -> Q. The function d takes the current input and
 Q is the set of possible internal states
 A is a subset of Q, the set that F "accepts".
 q0 is some initial starting condition.
+
+Let's try it.
 */
 
+
+//Create an F acceptor:
+let F = {
+    //Define some input alphabet:
+    ///Using numbers for simplicity in the update function.
+    S: [0, 1, 2, 3, 4, 5, 6, 7],
+
+    //Define some state set Q
+    Q: [0, 1, 2, 3, 4, 5, 6, 7],
+
+    //define some subset of accepting states:
+    A: [2, 3, 4, 5],
+
+    //Define initial state for control
+    q0: 0,
+
+    //Set current state to initial state
+    q: 0,
+
+    //Not including q as a parameter because it's contained in the object programmatically,
+    //But the mapping is still SxQ -> Q
+    d: function(s) {
+        //if s is not in the input alphabet S we simply do nothing - s is outside the syntax of S
+        if(!this.S.includes(s)){
+            return;
+        }
+
+        //if for some reason q is not in Q, we will just reset to q0
+        if(!this.Q.includes(this.q)){
+            this.q = this.q0;
+        }
+        
+        //run the d defined above and get the result:
+        let index = (s + this.q) % this.Q.length;
+
+        //update state q:
+        this.q = this.Q[index];
+    }
+}
+
+//let's print all the items of F fro sanity:
+console.log("input alphabet: " + F.S);
+console.log("State set: " + F.Q);
+console.log("Initial state: " + F.q0);
+console.log("Current state: " + F.q);
+console.log("Currently accepts? " + F.A.includes(F.q))
+console.log();
+
+//Now let's run it for a bit with random elements from S and see what it accepts and what it rejects:
+for(let i = 0; i < 10; i++){
+    let randIndex = Math.floor(Math.random() * F.S.length);
+    F.d(F.S[randIndex], F.q);
+    console.log("Current state: " + F.q);
+    console.log("Accepted? " + F.A.includes(F.q));
+    console.log();
+}

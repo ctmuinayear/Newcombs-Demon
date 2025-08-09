@@ -94,6 +94,7 @@ console.log();
 //Pre-computed by hand this should be 6
 F.D("123");
 console.log(F.q);
+console.log("Accepted? " + F.A.includes(F.q));
 console.log();
 
 //Let's try 234 
@@ -101,6 +102,14 @@ console.log();
 F.q = F.q0; //reset F to initial state
 F.D("234");
 console.log(F.q);
+console.log("Accepted? " + F.A.includes(F.q));
+console.log()
+
+//Let's try one it will actually accept:
+F.q = F.q0; //reset F to initial state
+F.D("345");
+console.log(F.q);
+console.log("Accepted? " + F.A.includes(F.q));
 
 //Note, this recursion actually takes the string backwards. If F.q = 0, then F.D(123) will
 //add 3 to 0, rather than 1. In this case it's commutative - F is effectively an implementation

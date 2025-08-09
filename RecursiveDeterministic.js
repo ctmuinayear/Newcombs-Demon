@@ -10,7 +10,7 @@ S* is the set of all possible strings from S.
 A string of S is simply some finite sequence of elements from S.
 
 Remember we only defined d for single s ⊂ S. So let's extend F to handle string from S by
-introducing the empty string λ, and an "extended transition function " dp.
+introducing the empty string λ, and an "extended transition function" dp.
 
 dp functions like so:
 Given t ⊂ S* and s ⊂ S

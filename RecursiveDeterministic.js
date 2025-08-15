@@ -5,15 +5,15 @@ really a problem for us, since we had our for loop. The for loop was external to
 and Langan seems to be influenced by recursive ideas, so let's extend our automata to handle
 strings recursively.
 
-Let's say we have a string t ⊂ S*
+Let's say we have a string t ∈ S*
 S* is the set of all possible strings from S.
 A string of S is simply some finite sequence of elements from S.
 
-Remember we only defined d for single s ⊂ S. So let's extend F to handle string from S by
+Remember we only defined d for single s ∈ S. So let's extend F to handle string from S by
 introducing the empty string λ, and an "extended transition function" dp.
 
 dp functions like so:
-Given t ⊂ S* and s ⊂ S
+Given t ∈ S* and s ∈ S
 dp(λ, q) = q;
 dp(ts, q) = d(t, dp(t, q))
 

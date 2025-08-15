@@ -4,9 +4,9 @@ Langan moves on to handle the case that a non-deterministic automata is acceptin
 This is done by adjusting our dn: S x Q -> Q to dnp: S x Q -> 2^Q
 
 Our dnp is defined as follows:
-1) Let t ⊂ S* and s ⊂ S
+1) Let t ∈ S* and s ∈ S
 2) dnp(λ, q) = {q};
-3) dnp(ts, q) = U(q' ⊂ dnp(t, q))(dn(s, q'))
+3) dnp(ts, q) = U(q' ∈ dnp(t, q))(dn(s, q'))
 ---->That is the union of all our original non-deterministic outputs dn over the character s
 ---->for all q' from dnp(t, q). Another recursive definition.
 4) Fn is then said to accept a string t iff dnp(t, q) ∩ A =/= {}.
